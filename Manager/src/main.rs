@@ -1,6 +1,6 @@
 mod user;
 mod chat;
-mod API;
+mod api;
 
 use axum::{
     routing::{get, post},

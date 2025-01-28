@@ -1,9 +1,8 @@
 use axum::Json;
 use serde::Deserialize;
-use crate::{API::{UserLogin, UserRegister, UpdateData, connection, ApiResponse}};
+use crate::{api::{Response, connection, ApiResponse}};
 
-
-pub async fn login_user(Json(payload): Json<UserLogin>) -> Json<ApiResponse> {
+pub async fn login_user(Json(payload): Json<Response>) -> Json<ApiResponse> {
     let request = serde_json::json!({
         "action": "login",
         "username": payload.username,
@@ -13,7 +12,7 @@ pub async fn login_user(Json(payload): Json<UserLogin>) -> Json<ApiResponse> {
     Json(response)
 }
 
-pub async fn register_user(Json(payload): Json<UserRegister>) -> Json<ApiResponse> {
+pub async fn register_user(Json(payload): Json<Response>) -> Json<ApiResponse> {
     let request = serde_json::json!({
         "action": "register",
         "username": payload.username,
@@ -24,7 +23,7 @@ pub async fn register_user(Json(payload): Json<UserRegister>) -> Json<ApiRespons
     Json(response)
 }
 
-pub async fn update_user_data(Json(payload): Json<UpdateData>) -> Json<ApiResponse> {
+pub async fn update_user_data(Json(payload): Json<Response>) -> Json<ApiResponse> {
     let request = serde_json::json!({
         "action": "update_data",
         "username": payload.username,

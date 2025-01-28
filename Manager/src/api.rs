@@ -2,28 +2,16 @@ use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use zmq::Context;
 const ENDPOINT: &str = "tcp://127.0.0.1:25378";
-#[derive(Deserialize)]
-pub struct User {
-    pub username: String,
-}
-#[derive(Deserialize)]
-pub struct UpdateData {
-    pub username: String,
-    pub option: String,
-    pub data: String,
-}
 
 #[derive(Deserialize)]
-pub struct UserRegister {
-    pub username: String,
-    pub password: String,
-    pub email: String,
-}
+pub struct Response {
+    pub username: Option<String>,
 
-#[derive(Deserialize)]
-pub struct UserLogin {
-    pub username: String,
-    pub password: String,
+    pub password: Option<String>,
+    pub email: Option<String>,
+
+    pub option: Option<String>,
+    pub data: Option<String>,
 }
 
 #[derive(Serialize, Deserialize)]
